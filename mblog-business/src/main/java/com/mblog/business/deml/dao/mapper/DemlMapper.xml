@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mblog.business.deml.dao.DemlDao">
+
+
+    <select id="listDeml" resultType="com.mblog.business.deml.model.Deml">
+        SELECT * FROM deml c
+    </select>
+
+
+</mapper>
