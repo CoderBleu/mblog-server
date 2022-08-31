@@ -1,0 +1,52 @@
+# 服务端口
+server:
+  port: 8082
+
+## 服务名
+spring:
+  application:
+    name: mblog-service
+  # 环境设置：dev、test、prod
+  profiles:
+    active: dev
+  # mysql数据库连接
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/blog?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+  # nacos配置
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yml
+  redis:
+    database: 0 #redis数据库索引，默认为0
+    host: 172.16.50.129 #redis服务器地址
+    port: 6379 #redis服务器连接端口
+    password: root #redis服务器连接密码，默认为null
+    timeout: 5000 #redis连接超时时间
+
+# mybatis日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  # 配置扫描xml
+  mapper-locations: classpath*:/com/mblog/business/**/dao/mapper/*.xml
+
+# 开启熔断机制
+feign:
+  hystrix:
+    enabled: true
+# 设置hystrix超时时间,默认1000ms
+# 设置hystrix超时时间，默认1000ms
+#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=6000
+
+logging:
+  level:
+    com.mblog.service: INFO
