@@ -21,17 +21,29 @@ import org.springframework.context.annotation.Bean;
 @ConfigurationProperties(prefix = "spring.redis")
 public class BaseRedissonConfig {
 
-    @Value(value = "${spring.redis.host}")
     private String host;
 
-    @Value(value = "${spring.redis.port}")
     private String port;
 
-    @Value(value = "${spring.redis.password}")
     private String password;
 
-    @Value(value = "${spring.redis.database}")
     private Integer database;
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public void setPort(String port) {
+        this.port = port;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setDatabase(Integer database) {
+        this.database = database;
+    }
 
     @Bean
     public RedissonClient redissonClient() {
